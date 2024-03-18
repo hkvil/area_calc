@@ -1,5 +1,7 @@
+import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
+import 'package:universal_html/html.dart' as universal_html;
 
 class ResultDialog extends StatelessWidget {
   const ResultDialog({super.key, required this.result});
@@ -36,7 +38,7 @@ class ResultDialog extends StatelessWidget {
                 children: [
                   FilledButton(
                     onPressed: () {
-                      Navigator.of(context).pop();
+                      Navigator.of(context).popAndPushNamed('/select');
                     },
                     style: FilledButton.styleFrom(
                         shape: RoundedRectangleBorder(
