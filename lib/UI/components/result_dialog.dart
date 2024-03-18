@@ -1,7 +1,8 @@
-import 'package:flutter/foundation.dart';
+import 'dart:developer';
+import 'dart:io';
+
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
-import 'package:universal_html/html.dart' as universal_html;
 
 class ResultDialog extends StatelessWidget {
   const ResultDialog({super.key, required this.result});
@@ -48,6 +49,9 @@ class ResultDialog extends StatelessWidget {
                   ),
                   OutlinedButton(
                       onPressed: () {
+                        if (Platform.isWindows) {
+                          exit(0);
+                        }
                         SystemNavigator.pop();
                       },
                       style: OutlinedButton.styleFrom(
