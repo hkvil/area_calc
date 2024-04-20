@@ -1,4 +1,5 @@
 import 'dart:io';
+import 'package:area_calc/constant.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 
@@ -19,10 +20,7 @@ class ResultDialog extends StatelessWidget {
             children: [
               Text(
                 result,
-                style: const TextStyle(
-                    fontWeight: FontWeight.bold,
-                    fontSize: 32,
-                    color: Color(0xFF00478B)),
+                style: resultTextStyle,
               ),
               const Divider(
                 thickness: 2.0,
@@ -30,7 +28,7 @@ class ResultDialog extends StatelessWidget {
               const Text(
                 "Apakah anda ingin menghitung luas lagi?",
                 textAlign: TextAlign.center,
-                style: TextStyle(fontSize: 16, fontWeight: FontWeight.w400),
+                style: resultConfirmationTextStyle,
               ),
               Row(
                 mainAxisAlignment: MainAxisAlignment.spaceAround,

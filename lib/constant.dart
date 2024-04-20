@@ -6,7 +6,14 @@ const homeTitleStyle = TextStyle(
   fontSize: 40,
 );
 
+const resultTextStyle = TextStyle(
+    fontWeight: FontWeight.bold, fontSize: 32, color: Color(0xFF00478B));
+
+const resultConfirmationTextStyle =
+    TextStyle(fontSize: 16, fontWeight: FontWeight.w400);
+
 const bold = TextStyle(fontWeight: FontWeight.bold);
+
 const TextSolusi = Text.rich(
   textAlign: TextAlign.center,
   TextSpan(
