@@ -12,6 +12,7 @@ class HomePage extends StatelessWidget {
     return BaseScaffold(
         isAppBarEnabled: false,
         title: "",
+        isBottomNavEnabled: false,
         body: Center(
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.center,

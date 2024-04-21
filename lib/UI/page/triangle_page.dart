@@ -4,8 +4,11 @@ import 'package:area_calc/UI/components/main_button.dart';
 import 'package:area_calc/UI/components/result_dialog.dart';
 import 'package:area_calc/UI/components/shape_selection_button.dart';
 import 'package:area_calc/UI/components/triangle.dart';
+import 'package:area_calc/provider/database_provider.dart';
+import 'package:area_calc/provider/navigation_index_provider.dart';
 import 'package:area_calc/utils.dart';
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
 
 class CalcTrianglePage extends StatefulWidget {
   const CalcTrianglePage({super.key});
@@ -23,6 +26,8 @@ class _CalcTrianglePageState extends State<CalcTrianglePage> {
     if (_formKey.currentState!.validate()) {
       final res =
           calculateTriangleArea(double.parse(b.text), double.parse(h.text));
+      Provider.of<DatabaseProvider>(context, listen: false).insertTriangle(
+          double.parse(b.text), double.parse(h.text), double.parse(res));
       showDialog(
           context: context,
           builder: (context) {
@@ -33,6 +38,8 @@ class _CalcTrianglePageState extends State<CalcTrianglePage> {
 
   @override
   Widget build(BuildContext context) {
+    Provider.of<NavigationIndexProvider>(context, listen: false).selectedIndex =
+        0;
     return BaseScaffold(
         isAppBarEnabled: true,
         title: "Luas Segitiga",

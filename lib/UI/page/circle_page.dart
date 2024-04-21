@@ -4,8 +4,11 @@ import 'package:area_calc/UI/components/input_field.dart';
 import 'package:area_calc/UI/components/main_button.dart';
 import 'package:area_calc/UI/components/result_dialog.dart';
 import 'package:area_calc/UI/components/shape_selection_button.dart';
+import 'package:area_calc/provider/database_provider.dart';
+import 'package:area_calc/provider/navigation_index_provider.dart';
 import 'package:area_calc/utils.dart';
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
 
 class CalcCirclePage extends StatefulWidget {
   const CalcCirclePage({super.key});
@@ -21,6 +24,8 @@ class _CalcCirclePageState extends State<CalcCirclePage> {
   void validateForm() {
     if (_formKey.currentState!.validate()) {
       final res = calculateCircleArea(double.parse(r.text));
+      Provider.of<DatabaseProvider>(context, listen: false)
+          .insertCircle(double.parse(r.text), double.parse(res));
       showDialog(
           context: context,
           builder: (context) {
@@ -31,6 +36,8 @@ class _CalcCirclePageState extends State<CalcCirclePage> {
 
   @override
   Widget build(BuildContext context) {
+    Provider.of<NavigationIndexProvider>(context, listen: false).selectedIndex =
+        0;
     return BaseScaffold(
         isAppBarEnabled: true,
         title: "Luas Lingkaran",
